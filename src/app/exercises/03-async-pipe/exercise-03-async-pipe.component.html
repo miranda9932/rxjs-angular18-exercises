@@ -19,7 +19,7 @@
     <button type="button" (click)="startManualSubscription()">Iniciar subscribe manual</button>
 
     <ul class="log-list">
-      @for (log of logs; track $index) {
+      @for (log of listToDo; track $index) {
         <li>{{ log }}</li>
       }
     </ul>

@@ -2,7 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { Component, DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { interval } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-exercise-03-async-pipe',
@@ -14,18 +14,23 @@ import { map } from 'rxjs/operators';
 export class Exercise03AsyncPipeComponent {
   private readonly destroyRef = inject(DestroyRef);
 
-  logs: string[] = [];
+  listToDo: string[] = [];
 
+  //When I don`t want to do implement manual subscriptions, in this way subscriptions open and close automatically
   readonly counter$ = interval(1000).pipe(
-    map(value => value + 1)
+    map(value => value +10 )
   );
 
+  //When I was to take the control fo the observables 
   startManualSubscription(): void {
     interval(1000).pipe(
-      map(value => `Subscribe manual: ${value + 1}`),
+      tap(value => {
+        this.listToDo = [...this.listToDo, `original value: ${value}`]
+      }),
+      map(value => `Manual subscribing: ${value + 1}`),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe(message => {
-      this.logs = [...this.logs, message];
+      this.listToDo = [...this.listToDo, message];
     });
   }
 }
