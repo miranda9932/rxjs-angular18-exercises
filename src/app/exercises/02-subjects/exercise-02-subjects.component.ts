@@ -14,9 +14,9 @@ export class Exercise02SubjectsComponent {
   private behaviorCounter = 1;
   private replayCounter = 1;
 
-  private readonly eventSubject = new Subject<string>();
-  private readonly statusSubject = new BehaviorSubject<string>('miranda for president');
-  private readonly messageSubject = new ReplaySubject<string>(3);
+  private readonly eventSubject = new Subject<string>(); // Lo usaria para clicks, eventos, comunicaciones simples entre partes... 
+  private readonly statusSubject = new BehaviorSubject<string>('miranda for president'); // Estado actual, usuario seleccionado, filtros actuales...
+  private readonly messageSubject = new ReplaySubject<string>(3); //Ultimos logs, ultimas notificaciones... 
 
   emitSubject(): void {
     this.eventSubject.next(`evento ${this.subjectCounter++}`);
@@ -53,7 +53,9 @@ export class Exercise02SubjectsComponent {
       this.addLog(`[BehaviorSubject][subscriber ${subscriberId}] ${value}`);
     });
 
-    this.statusSubject.subscribe(value => this.addLog(`hellow mellow`));
+    this.statusSubject.subscribe(value => {
+      this.addLog(`Second subscriber${value}`);
+    });
 
     this.addLog(`[BehaviorSubject] Nuevo subscriber ${subscriberId}. Recibe el último estado inmediatamente.`);
   }
@@ -69,8 +71,13 @@ export class Exercise02SubjectsComponent {
     this.messageSubject.subscribe(value => {
       this.addLog(`[ReplaySubject][subscriber ${subscriberId}] ${value}`);
     });
+    
+    this.messageSubject.subscribe(value => {
+      this.addLog(`[ReplaySubject][subscriber ${subscriberId}] ${value}`);
+    });
 
-    this.addLog(`[ReplaySubject] Nuevo subscriber ${subscriberId}. Recibe los últimos 2 mensajes.`);
+
+    this.addLog(`[ReplaySubject] Nuevo subscriber ${subscriberId}. Recibe los últimos 3 mensajes.`);
   }
 
   clearLogs(): void {
