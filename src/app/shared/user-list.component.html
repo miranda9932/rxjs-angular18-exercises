@@ -1,0 +1,17 @@
+@if (users.length === 0) {
+  <p class="small">No hay usuarios para mostrar.</p>
+} @else {
+  @for (user of users; track user.id) {
+    <div class="user-row">
+      <span>{{ user.name }}</span>
+      <span>
+        <span class="badge">{{ user.role }}</span>
+        @if (user.active) {
+          <span class="small"> activo</span>
+        } @else {
+          <span class="small"> inactivo</span>
+        }
+      </span>
+    </div>
+  }
+}

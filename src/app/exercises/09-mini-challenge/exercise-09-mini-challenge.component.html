@@ -1,0 +1,41 @@
+<section class="card">
+  <h2>09 - Mini reto final</h2>
+  <p>
+    Objetivo: juntar lo aprendido: formulario reactivo, trigger, HTTP, búsqueda, filtrado y AsyncPipe.
+  </p>
+
+  <label>
+    Buscar en backend mock
+    <input type="text" [formControl]="searchControl" placeholder="Ana, developer, admin..." />
+  </label>
+
+  <label>
+    Estado
+    <select [formControl]="statusControl">
+      <option value="all">Todos</option>
+      <option value="active">Activos</option>
+      <option value="inactive">Inactivos</option>
+    </select>
+  </label>
+
+  <button type="button" (click)="reload()">Forzar recarga</button>
+
+  @if (lastRequestNumber$ | async; as requestNumber) {
+    <p><span class="badge">Última request mock: {{ requestNumber }}</span></p>
+  }
+
+  @if (filteredUsers$ | async; as users) {
+    <app-user-list [users]="users" />
+  } @else {
+    <p>Cargando...</p>
+  }
+</section>
+
+<section class="card">
+  <h3>Tu tarea</h3>
+  <ol>
+    <li>Revisa el código y localiza dónde se usa <code>switchMap</code>.</li>
+    <li>Cambia <code>switchMap</code> por <code>mergeMap</code> y escribe en tus notas qué diferencia observas al escribir rápido.</li>
+    <li>Vuelve a dejar <code>switchMap</code>, porque para buscadores suele ser la opción correcta.</li>
+  </ol>
+</section>

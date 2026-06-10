@@ -1,0 +1,27 @@
+<section class="card">
+  <h2>01 - Bases RxJS: Observable, pipe, map, filter, tap</h2>
+  <p>
+    Objetivo: entender que un Observable emite valores, y que con <code>pipe()</code> puedes transformarlos.
+  </p>
+
+  <button type="button" (click)="runOfExample()">Ejecutar of()</button>
+  <button type="button" (click)="runFromExample()">Ejecutar from()</button>
+  <button type="button" (click)="runIntervalExample()">Ejecutar interval()</button>
+  <button type="button" class="secondary" (click)="clearLogs()">Limpiar logs</button>
+
+  <h3>Logs</h3>
+  <ul class="log-list">
+    @for (log of logs; track $index) {
+      <li>{{ log }}</li>
+    }
+  </ul>
+</section>
+
+<section class="card">
+  <h3>Tu tarea</h3>
+  <ol>
+    <li>Cambia el <code>filter</code> para dejar pasar solo números mayores que 2.</li>
+    <li>Cambia el <code>map</code> para multiplicar por 100.</li>
+    <li>Añade un <code>tap</code> para ver el valor antes y después del <code>map</code>.</li>
+  </ol>
+</section>

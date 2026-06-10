@@ -1,0 +1,26 @@
+<section class="card">
+  <h2>04 - Gestionar llamada HTTP con RxJS</h2>
+  <p>
+    Objetivo: usar <code>HttpClient</code>, transformar DTOs con <code>map</code> y manejar errores con <code>catchError</code>.
+  </p>
+
+  <p class="small">
+    Esta app usa un interceptor mock. La llamada parece real: <code>GET /api/users</code>.
+  </p>
+
+  @if (users$ | async; as users) {
+    <app-user-list [users]="users" />
+  } @else {
+    <p>Cargando usuarios...</p>
+  }
+</section>
+
+<section class="card">
+  <h3>Tu tarea</h3>
+  <ol>
+    <li>Abre <code>src/app/core/user.service.ts</code>.</li>
+    <li>Revisa <code>getUsers()</code>.</li>
+    <li>Cambia el mapping para añadir un prefijo al nombre, por ejemplo <code>DEV - Ana García</code>.</li>
+    <li>Vuelve a dejarlo como estaba.</li>
+  </ol>
+</section>

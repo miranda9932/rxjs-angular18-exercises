@@ -1,0 +1,23 @@
+<div class="app-shell">
+  <aside class="sidebar">
+    <h1>RxJS + Angular 18</h1>
+    <p>Ejercicios progresivos para practicar Observables, Subjects, HTTP, cache, triggers y filtros.</p>
+
+    <nav>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+      <a routerLink="/01-basics" routerLinkActive="active">01 - Bases RxJS</a>
+      <a routerLink="/02-subjects" routerLinkActive="active">02 - Subjects</a>
+      <a routerLink="/03-async-pipe" routerLinkActive="active">03 - AsyncPipe</a>
+      <a routerLink="/04-http" routerLinkActive="active">04 - HTTP</a>
+      <a routerLink="/05-cache" routerLinkActive="active">05 - Cache</a>
+      <a routerLink="/06-trigger" routerLinkActive="active">06 - Trigger</a>
+      <a routerLink="/07-chained-http" routerLinkActive="active">07 - HTTP encadenado</a>
+      <a routerLink="/08-filter" routerLinkActive="active">08 - Filtrado</a>
+      <a routerLink="/09-mini-challenge" routerLinkActive="active">09 - Mini reto</a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <router-outlet />
+  </main>
+</div>

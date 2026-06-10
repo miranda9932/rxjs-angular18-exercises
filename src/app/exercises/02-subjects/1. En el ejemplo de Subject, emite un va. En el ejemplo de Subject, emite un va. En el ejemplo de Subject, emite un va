@@ -1,0 +1,9 @@
+1. En el ejemplo de Subject, emite un valor antes de suscribirte y otro después. Comprueba cuál aparece.
+
+2. En el ejemplo de BehaviorSubject, cambia el valor inicial y comprueba qué recibe un nuevo suscriptor.
+
+3. En el ejemplo de ReplaySubject, cambia el buffer de 2 a 3 y comprueba cuántos valores antiguos recibe el nuevo suscriptor.
+
+4. Añade un segundo suscriptor a cada ejemplo y compara qué recibe cada uno.
+
+5. Explica en un comentario cuándo usarías Subject, BehaviorSubject y ReplaySubject en Angular.

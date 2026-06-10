@@ -1,0 +1,34 @@
+<section class="card">
+  <h2>07 - HTTP encadenado: respuesta con ID para segunda llamada</h2>
+  <p>
+    Objetivo: hacer <code>POST /api/orders</code>, recibir un ID y usarlo en <code>GET /api/orders/:id</code>.
+  </p>
+
+  <label>
+    Producto
+    <select [formControl]="productIdControl">
+      <option value="keyboard">Keyboard</option>
+      <option value="mouse">Mouse</option>
+      <option value="monitor">Monitor</option>
+    </select>
+  </label>
+
+  <label>
+    Cantidad
+    <input type="number" min="1" [formControl]="quantityControl" />
+  </label>
+
+  <button type="button" (click)="save()">Crear pedido</button>
+
+  @if (lastOrder) {
+    <h3>Resultado de la segunda llamada</h3>
+    <pre>{{ lastOrder | json }}</pre>
+  }
+</section>
+
+<section class="card">
+  <h3>Qué observar</h3>
+  <p>
+    El componente no recibe la respuesta del primer POST. Recibe directamente el detalle final devuelto por la segunda llamada.
+  </p>
+</section>

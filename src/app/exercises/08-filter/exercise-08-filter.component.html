@@ -1,0 +1,36 @@
+<section class="card">
+  <h2>08 - Filtrar sin modificar el Observable original</h2>
+  <p>
+    Objetivo: crear un Observable derivado usando <code>combineLatest</code>, <code>map</code>,
+    <code>debounceTime</code> y <code>distinctUntilChanged</code>.
+  </p>
+
+  <label>
+    Buscar por nombre o rol
+    <input type="text" [formControl]="searchControl" placeholder="Ejemplo: developer" />
+  </label>
+
+  <div class="grid">
+    <article class="card">
+      <h3>Observable original: users$</h3>
+      @if (users$ | async; as users) {
+        <app-user-list [users]="users" />
+      }
+    </article>
+
+    <article class="card">
+      <h3>Observable derivado: filteredUsers$</h3>
+      @if (filteredUsers$ | async; as users) {
+        <app-user-list [users]="users" />
+      }
+    </article>
+  </div>
+</section>
+
+<section class="card">
+  <h3>Tu tarea</h3>
+  <ol>
+    <li>Añade un checkbox o select para filtrar solo usuarios activos.</li>
+    <li>No modifiques <code>users$</code>. Crea un nuevo criterio dentro de <code>filteredUsers$</code>.</li>
+  </ol>
+</section>

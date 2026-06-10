@@ -1,0 +1,36 @@
+<section class="card">
+  <h2>02 - Subject, BehaviorSubject y ReplaySubject</h2>
+  <p>Objetivo: ver la diferencia entre evento, estado actual e historial limitado.</p>
+
+  <div class="grid">
+    <article class="card">
+      <h3>Subject</h3>
+      <p class="small">No guarda valores anteriores. Sirve para eventos.</p>
+      <button type="button" (click)="emitSubject()">Emitir evento</button>
+      <button type="button" class="secondary" (click)="subscribeSubject()">Suscribirme ahora</button>
+    </article>
+
+    <article class="card">
+      <h3>BehaviorSubject</h3>
+      <p class="small">Guarda el último valor. Sirve para estado actual.</p>
+      <button type="button" (click)="nextStatus()">Cambiar estado</button>
+      <button type="button" class="secondary" (click)="subscribeBehaviorSubject()">Nuevo subscriber</button>
+    </article>
+
+    <article class="card">
+      <h3>ReplaySubject</h3>
+      <p class="small">Guarda los últimos N valores. Aquí guarda 2.</p>
+      <button type="button" (click)="emitReplaySubject()">Emitir mensaje</button>
+      <button type="button" class="secondary" (click)="subscribeReplaySubject()">Nuevo subscriber</button>
+    </article>
+  </div>
+
+  <button type="button" class="danger" (click)="clearLogs()">Limpiar logs</button>
+
+  <h3>Logs</h3>
+  <ul class="log-list">
+    @for (log of logs; track $index) {
+      <li>{{ log }}</li>
+    }
+  </ul>
+</section>

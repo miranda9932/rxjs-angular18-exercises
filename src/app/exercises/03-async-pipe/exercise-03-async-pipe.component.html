@@ -1,0 +1,27 @@
+<section class="card">
+  <h2>03 - AsyncPipe y takeUntilDestroyed</h2>
+  <p>
+    Objetivo: aprender a consumir Observables sin dejar suscripciones abiertas.
+  </p>
+
+  <article class="card">
+    <h3>Patrón recomendado para pintar en HTML</h3>
+    <p>Este contador se pinta con <code>AsyncPipe</code>. No hay subscribe manual.</p>
+
+    @if (counter$ | async; as counter) {
+      <p><strong>Counter:</strong> {{ counter }}</p>
+    }
+  </article>
+
+  <article class="card">
+    <h3>Subscribe manual solo para efectos</h3>
+    <p>Este botón crea una suscripción protegida con <code>takeUntilDestroyed</code>.</p>
+    <button type="button" (click)="startManualSubscription()">Iniciar subscribe manual</button>
+
+    <ul class="log-list">
+      @for (log of logs; track $index) {
+        <li>{{ log }}</li>
+      }
+    </ul>
+  </article>
+</section>
