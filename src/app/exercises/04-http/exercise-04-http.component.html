@@ -12,7 +12,12 @@
     <app-user-list [users]="users" />
   } @else {
     <p>Cargando usuarios...</p>
+  } 
+
+  @if (requestLog) {
+    <h3> {{requestLog }} </h3>
   }
+
 </section>
 
 <section class="card">
