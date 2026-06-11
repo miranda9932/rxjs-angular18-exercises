@@ -16,6 +16,9 @@ export class Exercise05CacheComponent {
   readonly lastRequestNumber$ = this.userService.lastRequestNumber$;
   cachedUsers$ = this.userService.getUsersCached();
 
+  newobservable$ = this.userService.getUsersCached();
+  secondObservable$ = this.userService.getUsersCached();
+
   resetCachedObservable(): void {
     this.cachedUsers$ = this.userService.getUsersCached();
   }
@@ -23,5 +26,7 @@ export class Exercise05CacheComponent {
   clearServiceCache(): void {
     this.userService.clearUsersCache();
     this.cachedUsers$ = this.userService.getUsersCached();
+    this.newobservable$ = this.userService.getUsersCached();
+    this.secondObservable$ = this.userService.getUsersCached();
   }
 }

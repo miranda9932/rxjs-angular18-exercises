@@ -41,6 +41,7 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get<UsersApiResponse>('/api/users').pipe(
       tap(response => this.lastRequestNumberSubject.next(response.requestNumber)),
+      tap(response => console.log(`Request HTTP launched, ${response.requestNumber}`)),
       map(response => response.users.map(dto => this.mapUser(dto))),
       catchError(error => this.handleError(error))
     );

@@ -29,6 +29,27 @@
         <p>Cargando...</p>
       }
     </article>
+
+    <article class="card">
+      <h3>Panel C</h3>
+      @if (newobservable$ | async; as users) {
+        <app-user-list [users]="users" />
+      } @else {
+        <p>Cargando...</p>
+      }
+    </article>
+
+    <article class="card">
+      <h3>Panel D</h3>
+      @if (secondObservable$ | async; as users) {
+        <app-user-list [users]="users" />
+      } @else {
+        <p>Cargando...</p>
+      }
+    </article>
+
+    
+
   </div>
 </section>
 
