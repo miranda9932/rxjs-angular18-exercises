@@ -2,7 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { Component, DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { exhaustMap, Subject } from 'rxjs';
+import { catchError, exhaustMap, Subject } from 'rxjs';
 import { OrderDetail } from '../../core/models';
 import { OrderService } from '../../core/order.service';
 
@@ -33,6 +33,7 @@ export class Exercise07ChainedHttpComponent {
     ).subscribe(orderDetail => {
       this.lastOrder = orderDetail;
     });
+
   }
 
   save(): void {
