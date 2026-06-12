@@ -18,11 +18,19 @@ export class UserService {
   private readonly lastRequestNumberSubject = new BehaviorSubject<number>(0);
   readonly lastRequestNumber$ = this.lastRequestNumberSubject.asObservable();
 
+  private readonly totalUsersSubject = new BehaviorSubject<number>(0);
+  readonly totalUsers$ = this.totalUsersSubject.asObservable();
+
+  private readonly reloadMessageSubject = new BehaviorSubject<string>('');
+  readonly reloadMessage$ = this.reloadMessageSubject.asObservable();
+
   private readonly reloadUsersSubject = new Subject<void>();
 
   readonly usersTriggered$: Observable<User[]> = this.reloadUsersSubject.pipe(
     startWith(void 0),
+    tap(() => { this.reloadMessageSubject.next('Users are reloading...');}),
     switchMap(() => this.getUsers()),
+    tap(filtredTotalUsers => this.totalUsersSubject.next(filtredTotalUsers.length)),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 

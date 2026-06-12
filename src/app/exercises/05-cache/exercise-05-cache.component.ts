@@ -39,7 +39,12 @@ export class Exercise05CacheComponent {
   clearServiceCache(): void {
     this.userService.clearUsersCache();
     this.cachedUsers$ = this.userService.getUsersCached();
-    this.adminObservableList$ = this.userService.getUsersCached();
-    this.activeObservableList$ = this.userService.getUsersCached();
+    this.adminObservableList$ = this.userService.getUsersCached().pipe(
+      map(users => users.filter(user => user.role === 'admin'))
+    );
+    ;
+    this.activeObservableList$ = this.userService.getUsersCached().pipe(
+      map(users => users.filter(user => user.active === true))
+    );
   }
 }

@@ -16,6 +16,10 @@ export class Exercise06TriggerComponent {
   readonly users$ = this.userService.usersTriggered$;
   readonly lastRequestNumber$ = this.userService.lastRequestNumber$;
 
+  readonly reloadMessage$ = this.userService.reloadMessage$;
+
+  readonly totalUsers$ = this.userService.totalUsers$;
+   
   reload(): void {
     this.userService.reloadUsers();
   }
